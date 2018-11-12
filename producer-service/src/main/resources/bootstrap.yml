@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: producer-service
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: configuration-center
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://registration-center:8000/eureka/
+
+server:
+  port: 50001
