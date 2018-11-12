@@ -54,8 +54,8 @@ subprojects {
     /**
      * Additional Instructions in Dockerfile
      */
-    dockerDistTar {
-    }
+//    dockerDistTar {
+//    }
 
     /**
      * The following properties can be configured

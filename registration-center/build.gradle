@@ -1,2 +1,7 @@
 group = 'io.github.gaoyuyue'
 version = '0.0.1-SNAPSHOT'
+
+//bootRepackage {
+//    mainClass = 'io.github.gaoyuyue.registrationcenter.RegistrationCenterApplication'
+//}
+

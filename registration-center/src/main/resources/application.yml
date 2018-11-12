@@ -3,7 +3,8 @@ spring:
     name: registeration-center-single
 eureka:
   client:
-    service-url: http://${spring.application.name}:${server.port}/eureka/
+    service-url:
+      defaultZone: http://registeration-center:8000/eureka/
     fetch-registry: false
     register-with-eureka: false
 server:

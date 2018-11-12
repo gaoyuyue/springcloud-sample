@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: configuration-center
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/gaoyuyue/springcloud-ddd-sample
+          search-paths: config-repo
+    bus:
+      trace:
+        enabled: true
+  rabbitmq:
+    addresses: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+eureka:
+  client:
+    service-url:
+      defaultZone: http://registration-center:8000/eureka/

@@ -1,2 +1,5 @@
 rootProject.name = 'springcloud-ddd-sample'
 include 'registration-center'
+include 'configuration-center'
+include 'api-gateway'
+
