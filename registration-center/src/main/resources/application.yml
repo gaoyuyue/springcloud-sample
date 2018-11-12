@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: registeration-center-single
+eureka:
+  client:
+    service-url: http://${spring.application.name}:${server.port}/eureka/
+    fetch-registry: false
+    register-with-eureka: false
+server:
+  port: 8000
+
