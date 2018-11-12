@@ -1,0 +1,93 @@
+buildscript {
+    ext {
+        springBootVersion = '2.1.0.RELEASE'
+    }
+    repositories {
+        mavenLocal()
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("com.bmuschko:gradle-docker-plugin:4.0.4")
+//        classpath("se.transmode.gradle:gradle-docker:1.2")
+    }
+}
+
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+//    apply plugin: 'docker'
+    apply plugin: "com.bmuschko.docker-remote-api"
+
+    group = 'io.github.gaoyuyue'
+    version = '0.0.1-SNAPSHOT'
+    sourceCompatibility = 1.8
+
+    repositories {
+        mavenLocal()
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+        jcenter()
+        mavenCentral()
+    }
+
+    ext {
+        springCloudVersion = 'Greenwich.M1'
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
+
+    dependencies {
+        implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-server')
+        implementation('org.springframework.boot:spring-boot-starter-actuator')
+        implementation('org.springframework.boot:spring-boot-starter')
+        testImplementation('org.springframework.boot:spring-boot-starter-test')
+    }
+
+    task cleanDocker(type: Delete) {
+        delete fileTree("${buildDir}/docker") {
+            include '**/*'
+        }
+    }
+    
+    task copyBuild(type: Copy, dependsOn: build) {
+        dependsOn cleanDocker
+        from "build/libs/${project.getName()}-${version}.jar"
+        into "build/docker"
+    }
+
+    task copyScript(type: Copy, dependsOn: copyBuild) {
+//        from project.file("${buildDir}/resources/main/script")
+//        into project.file("${buildDir}/docker/script")
+    }
+
+    task createDockerFile(type: DockerFile, dependsOn: copyScript) {
+        def jarName = "${project.name}-${version}.jar".toString()
+        destFile = project.file("${project.buildDir}/docker/Dockerfile")
+
+        from java
+        volume("/tmp")
+        addFile jarName, ""
+        entryPoint("sh", "-c", "java -jar $jarName")
+
+//        addFile 'script', "${DOCKER_WORK_HOME}/script"
+//        copyfile(jarName, jarName)
+//        runCommand("touch $jarName.jar")
+//        environmentVariable("TZ", "Asia/Shanghai")
+//        workingDir("/app")
+//        exposePort(7777)
+//        defaultCommand("sh", "-c", "java \$DUIC_OPTS -jar $jarName")
+    }
+
+    task buildDockerImage(type: DockerBuildImage, dependsOn: createDockerFile) {
+        inputDir = createDockerFile.destFile.parentFile
+    }
+}
+
