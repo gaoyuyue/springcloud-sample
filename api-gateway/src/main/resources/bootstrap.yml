@@ -6,10 +6,14 @@ spring:
       discovery:
         enabled: true
         service-id: configuration-center
+      name: api-gateway
+      label: master
+      profile: dev
 
 eureka:
   client:
-    service-url: http://registration-center:8000/eureka/
+    service-url:
+      defaultZone: http://registration-center:8000/eureka/
 
 server:
   port: 50000
