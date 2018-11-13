@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: configuration-center
+
+eureka:
+  client:
+    service-url: http://registration-center:8000/eureka/
+
+server:
+  port: 50000
+
