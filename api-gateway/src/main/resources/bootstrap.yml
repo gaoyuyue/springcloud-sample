@@ -18,3 +18,4 @@ eureka:
 server:
   port: 50000
 
+#debug: true
