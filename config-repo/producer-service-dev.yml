@@ -4,4 +4,4 @@ spring:
       probability: 1.0
   zipkin:
     base-url: http://localhost:8003
-helloworld: zzz
+helloworld: qqq
