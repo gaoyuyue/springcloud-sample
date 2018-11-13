@@ -1,27 +1,8 @@
-#spring:
-#  application:
-#    name: api-gateway
-#server:
-#  port: 50000
-#
-#  cloud:
-#    config:
-#      discovery:
-#        enabled: true
-#        service-id: configuration-center
-#      name: api-gateway
-#      label: master
-#      profile: dev
-#
-#eureka:
-#  client:
-#    service-url: http://registration-center:8000/eureka/
-
 zuul:
   routes:
-#    consumer-service:
-#      path: /consumer-service/**
-#      serviceId: consumer-service
+    consumer-service:
+      path: /consumer-service/**
+      serviceId: consumer-service
     producer-service:
       path: /producer-service/**
       serviceId: producer-service

@@ -19,6 +19,9 @@ eureka:
   client:
     service-url:
       defaultZone: http://registration-center:8000/eureka/
-
 server:
   port: 8001
+management:
+  endpoint:
+    bus-refresh:
+      enabled: true
