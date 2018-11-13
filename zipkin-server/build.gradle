@@ -1,0 +1,7 @@
+group 'io.github.gaoyuyue'
+version '0.0.1-SNAPSHOT'
+
+dependencies {
+    implementation('io.zipkin.java:zipkin-server:2.11.8')
+    implementation('io.zipkin.java:zipkin-autoconfigure-ui:2.11.8')
+}
