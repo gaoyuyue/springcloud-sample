@@ -6,9 +6,11 @@ spring:
       discovery:
         enabled: true
         service-id: configuration-center
-      name: api-gateway
-      label: master
-      profile: dev
+#      name: api-gateway
+#      label: master
+#      profile: dev
+#  main:
+#    allow-bean-definition-overriding: true
 
 eureka:
   client:
@@ -17,5 +19,6 @@ eureka:
 
 server:
   port: 50000
+
 
 #debug: true
