@@ -7,6 +7,9 @@ spring:
       discovery:
         enabled: true
         service-id: configuration-center
+      label: master
+      profile: dev
+      name: consumer-service
 
 server:
   port: 50002
@@ -14,13 +17,3 @@ eureka:
   client:
     service-url:
       defaultZone: http://registration-center:8000/eureka/
-
-feign:
-  hystrix:
-    enabled: true
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: hystrix.stream

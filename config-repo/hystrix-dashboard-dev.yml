@@ -1,0 +1,5 @@
+turbine:
+  app-config: consumer-service
+  aggregator:
+    cluster-config: default
+  cluster-name-expression: new String("default")

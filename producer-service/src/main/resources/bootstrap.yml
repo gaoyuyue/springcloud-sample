@@ -6,7 +6,9 @@ spring:
       discovery:
         enabled: true
         service-id: configuration-center
-
+      label: master
+      profile: dev
+      name: producer-service
 eureka:
   client:
     service-url:
@@ -14,3 +16,4 @@ eureka:
 
 server:
   port: 50001
+
