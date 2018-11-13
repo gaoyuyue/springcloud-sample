@@ -7,9 +7,6 @@ spring:
         git:
           uri: https://github.com/gaoyuyue/springcloud-ddd-sample/
           search-paths: config-repo
-    bus:
-      trace:
-        enabled: true
   rabbitmq:
     addresses: 127.0.0.1
     port: 5672
@@ -22,6 +19,7 @@ eureka:
 server:
   port: 8001
 management:
-  endpoint:
-    bus-refresh:
-      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
