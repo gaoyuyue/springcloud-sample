@@ -7,14 +7,14 @@ spring:
         git:
           uri: https://github.com/gaoyuyue/springcloud-ddd-sample/
           search-paths: config-repo
-#    bus:
-#      trace:
-#        enabled: true
-#  rabbitmq:
-#    addresses: 127.0.0.1
-#    port: 5672
-#    username: guest
-#    password: guest
+    bus:
+      trace:
+        enabled: true
+  rabbitmq:
+    addresses: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
 eureka:
   client:
     service-url:

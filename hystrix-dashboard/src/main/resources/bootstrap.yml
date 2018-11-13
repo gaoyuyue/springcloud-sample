@@ -1,6 +1,19 @@
 spring:
   application:
     name: hystrix-dashboard
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: configuration-center
+      label: master
+      profile: dev
+      name: hystrix-dashboard
+  rabbitmq:
+    addresses: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
 eureka:
   client:
     service-url:

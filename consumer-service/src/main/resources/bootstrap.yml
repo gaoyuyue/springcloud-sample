@@ -1,7 +1,6 @@
 spring:
   application:
     name: consumer-service
-
   cloud:
     config:
       discovery:
@@ -10,7 +9,11 @@ spring:
       label: master
       profile: dev
       name: consumer-service
-
+  rabbitmq:
+    addresses: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
 server:
   port: 50002
 eureka:

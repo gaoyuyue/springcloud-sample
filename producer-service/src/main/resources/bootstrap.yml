@@ -9,11 +9,15 @@ spring:
       label: master
       profile: dev
       name: producer-service
+  rabbitmq:
+    addresses: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
 eureka:
   client:
     service-url:
       defaultZone: http://registration-center:8000/eureka/
-
 server:
   port: 50001
 
