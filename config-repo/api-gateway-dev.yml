@@ -6,3 +6,6 @@ zuul:
     producer-service:
       path: /producer-service/**
       serviceId: producer-service
+    baidu:
+      path: baidu
+      url: http://www.baidu.com
