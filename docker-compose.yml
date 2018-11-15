@@ -1,0 +1,71 @@
+rabbitmq:
+  image: rabbitmq:management
+  ports:
+    - "4369:4369"
+    - "5671:5671"
+    - "5672:5672"
+    - "15671:15671"
+    - "15672:15672"
+  environment:
+    - RABBITMQ_DEFAULT_USER=guest
+    - RABBITMQ_DEFAULT_PASS=guest
+
+registration-center:
+  image: io.github.gaoyuyue/registration-center:0.0.1-snapshot
+  ports:
+    - 8000:8000
+  extra_hosts:
+    - "registration-center:127.0.0.1"
+
+zipkin-server:
+  image: io.github.gaoyuyue/zipkin-server:0.0.1-snapshot
+  ports:
+    - 8003:8003
+  links:
+    - registration-center
+
+configuration-center:
+  image: io.github.gaoyuyue/configuration-center:0.0.1-snapshot
+  ports:
+    - 8001:8001
+  links:
+    - registration-center
+    - rabbitmq
+
+api-gateway:
+  image: io.github.gaoyuyue/api-gateway:0.0.1-snapshot
+  ports:
+    - 50000:50000
+  links:
+    - configuration-center
+    - registration-center
+    - rabbitmq
+
+hystrix-dashboard:
+  image: io.github.gaoyuyue/hystrix-dashboard:0.0.1-snapshot
+  ports:
+    - 8002:8002
+  links:
+    - configuration-center
+    - registration-center
+    - rabbitmq
+
+producer-service:
+  image: io.github.gaoyuyue/producer-service:0.0.1-snapshot
+  ports:
+    - 50001:50001
+  links:
+    - configuration-center
+    - zipkin-server
+    - registration-center
+    - rabbitmq
+
+consumer-service:
+  image: io.github.gaoyuyue/consumer-service:0.0.1-snapshot
+  ports:
+    - 50002:50002
+  links:
+    - configuration-center
+    - zipkin-server
+    - registration-center
+    - rabbitmq

@@ -3,7 +3,7 @@ spring:
     sampler:
       probability: 1.0
   zipkin:
-    base-url: http://localhost:8003
+    base-url: http://zipkin-server:8003
 
 feign:
   hystrix:

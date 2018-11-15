@@ -12,9 +12,8 @@ spring:
     bus:
       trace:
         enabled: true
-  #      enabled: true
   rabbitmq:
-    addresses: 127.0.0.1
+    addresses: rabbitmq
     port: 5672
     username: guest
     password: guest
@@ -24,8 +23,3 @@ eureka:
       defaultZone: http://registration-center:8000/eureka/
 server:
   port: 50001
-#management:
-#  endpoints:
-#    web:
-#      exposure:
-#        include: '*'

@@ -10,7 +10,7 @@ spring:
       profile: dev
       name: hystrix-dashboard
   rabbitmq:
-    addresses: 127.0.0.1
+    addresses: rabbitmq
     port: 5672
     username: guest
     password: guest

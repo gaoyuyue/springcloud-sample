@@ -24,7 +24,6 @@ subprojects {
     apply plugin: 'io.spring.dependency-management'
     apply plugin: "com.bmuschko.docker-spring-boot-application"
 
-
     sourceCompatibility = 1.8
 
     repositories {
@@ -60,13 +59,13 @@ subprojects {
     /**
      * The following properties can be configured
      */
-//    docker {
-//        springBootApplication {
+    docker {
+        springBootApplication {
 //            baseImage = 'openjdk:8-alpine'
-//            ports = [9090, 8080]
-//            tag = 'awesome-spring-boot:1.115'
-//        }
-//    }
+            ports = []
+//            tag = ""
+        }
+    }
 
 }
 

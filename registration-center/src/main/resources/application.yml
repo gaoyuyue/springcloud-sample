@@ -1,6 +1,6 @@
 spring:
   application:
-    name: registeration-center-single
+    name: registeration-center
 eureka:
   client:
     service-url:
