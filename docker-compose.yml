@@ -16,6 +16,8 @@ registration-center:
     - 8000:8000
   extra_hosts:
     - "registration-center:127.0.0.1"
+  volumes:
+    - $PWD/script/:/app/script
 
 zipkin-server:
   image: io.github.gaoyuyue/zipkin-server:0.0.1-snapshot
@@ -31,6 +33,10 @@ configuration-center:
   links:
     - registration-center
     - rabbitmq
+  volumes:
+    - $PWD/script/:/app/script
+  entrypoint: ["/app/script/wait-for-it.sh", "registration-center:8000", "--", "java"]
+  command: ["-jar" ,"/app/configuration-center-0.0.1-SNAPSHOT.jar"]
 
 api-gateway:
   image: io.github.gaoyuyue/api-gateway:0.0.1-snapshot
@@ -40,15 +46,10 @@ api-gateway:
     - configuration-center
     - registration-center
     - rabbitmq
-
-hystrix-dashboard:
-  image: io.github.gaoyuyue/hystrix-dashboard:0.0.1-snapshot
-  ports:
-    - 8002:8002
-  links:
-    - configuration-center
-    - registration-center
-    - rabbitmq
+  volumes:
+    - $PWD/script/:/app/script
+  entrypoint: ["/app/script/wait-for-it.sh", "configuration-center:8001", "--", "java"]
+  command: ["-jar" ,"/app/api-gateway-0.0.1-SNAPSHOT.jar"]
 
 producer-service:
   image: io.github.gaoyuyue/producer-service:0.0.1-snapshot
@@ -59,6 +60,10 @@ producer-service:
     - zipkin-server
     - registration-center
     - rabbitmq
+  volumes:
+    - $PWD/script/:/app/script
+  entrypoint: ["/app/script/wait-for-it.sh", "configuration-center:8001", "--", "java"]
+  command: ["-jar", "/app/producer-service-0.0.1-SNAPSHOT.jar"]
 
 consumer-service:
   image: io.github.gaoyuyue/consumer-service:0.0.1-snapshot
@@ -69,3 +74,21 @@ consumer-service:
     - zipkin-server
     - registration-center
     - rabbitmq
+  volumes:
+    - $PWD/script/:/app/script
+  entrypoint: ["/app/script/wait-for-it.sh", "configuration-center:8001", "--", "java"]
+  command: ["-jar", "/app/consumer-service-0.0.1-SNAPSHOT.jar"]
+
+hystrix-dashboard:
+  image: io.github.gaoyuyue/hystrix-dashboard:0.0.1-snapshot
+  ports:
+  - 8002:8002
+  links:
+  - consumer-service
+  - configuration-center
+  - registration-center
+  - rabbitmq
+  volumes:
+  - $PWD/script/:/app/script
+  entrypoint: ["/app/script/wait-for-it.sh", "configuration-center:8001", "--", "java"]
+  command: ["-jar" ,"/app/hystrix-dashboard-0.0.1-SNAPSHOT.jar"]

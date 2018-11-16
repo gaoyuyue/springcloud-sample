@@ -50,11 +50,6 @@ subprojects {
         testImplementation('org.springframework.boot:spring-boot-starter-test')
     }
 
-    /**
-     * Additional Instructions in Dockerfile
-     */
-//    dockerDistTar {
-//    }
 
     /**
      * The following properties can be configured
@@ -65,6 +60,10 @@ subprojects {
             ports = []
 //            tag = ""
         }
+    }
+
+    dockerCreateDockerfile {
+        runCommand("apk update && apk upgrade && apk add --no-cache bash bash-doc bash-completion && rm -rf /var/cache/apk/* && /bin/bash")
     }
 
 }
