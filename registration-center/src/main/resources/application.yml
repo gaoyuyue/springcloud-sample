@@ -7,6 +7,8 @@ eureka:
       defaultZone: http://registration-center:8000/eureka/
     fetch-registry: false
     register-with-eureka: false
+  server:
+    peer-node-read-timeout-ms: 500
 server:
   port: 8000
 

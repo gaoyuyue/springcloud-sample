@@ -6,18 +6,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RefreshScope
+//@RefreshScope
 public class HelloController {
     @GetMapping("/hello")
     public String hello() {
         return "hello";
     }
 
-    @Value("${helloworld}")
-    private String helloworld;
-
-    @GetMapping("/helloworld")
-    public String helloworld() {
-        return helloworld;
-    }
+//    @Value("${helloworld}")
+//    private String helloworld;
+//
+//    @GetMapping("/helloworld")
+//    public String helloworld() {
+//        return helloworld;
+//    }
 }

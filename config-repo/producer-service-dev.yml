@@ -3,5 +3,7 @@ spring:
     sampler:
       probability: 1.0
   zipkin:
-    base-url: http://zipkin-server:8003
+    base-url: http://zipkin-server/
+#    sender:
+#      type: web
 helloworld: zzz

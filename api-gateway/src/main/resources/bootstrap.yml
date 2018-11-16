@@ -9,14 +9,25 @@ spring:
       name: api-gateway
       label: master
       profile: dev
-  rabbitmq:
-    addresses: rabbitmq
-    port: 5672
-    username: guest
-    password: guest
+      retry:
+        initial-interval: 5000
+        max-attempts: 6
+        max-interval: 10000
+        multiplier: 2
+      fail-fast: true
+#    bus:
+#      trace:
+#        enabled: true
+#  rabbitmq:
+#    addresses: rabbitmq
+#    port: 5672
+#    username: guest
+#    password: guest
 eureka:
   client:
     service-url:
       defaultZone: http://registration-center:8000/eureka/
+  instance:
+    prefer-ip-address: true
 server:
   port: 50000

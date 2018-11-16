@@ -16,6 +16,8 @@ eureka:
   client:
     service-url:
       defaultZone: http://registration-center:8000/eureka/
+  instance:
+    prefer-ip-address: true
 server:
   port: 8001
 management:

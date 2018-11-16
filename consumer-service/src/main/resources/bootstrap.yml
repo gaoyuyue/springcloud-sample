@@ -9,6 +9,12 @@ spring:
       label: master
       profile: dev
       name: consumer-service
+      retry:
+        initial-interval: 5000
+        max-attempts: 6
+        max-interval: 10000
+        multiplier: 2
+      fail-fast: true
   rabbitmq:
     addresses: rabbitmq
     port: 5672
@@ -20,3 +26,5 @@ eureka:
   client:
     service-url:
       defaultZone: http://registration-center:8000/eureka/
+  instance:
+    prefer-ip-address: true
