@@ -15,14 +15,17 @@ spring:
         max-interval: 10000
         multiplier: 2
       fail-fast: true
-#    bus:
-#      trace:
-#        enabled: true
-#  rabbitmq:
-#    addresses: rabbitmq
-#    port: 5672
-#    username: guest
-#    password: guest
+    bus:
+      trace:
+        enabled: true
+  rabbitmq:
+    addresses: rabbitmq
+    port: 5672
+    username: guest
+    password: guest
+  zipkin:
+    sender:
+      type: web
 eureka:
   client:
     service-url:

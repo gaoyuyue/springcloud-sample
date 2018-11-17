@@ -1,16 +1,14 @@
-zuul:
-  routes:
-    consumer-service:
-      path: /consumer-service/**
-      serviceId: consumer-service
-    producer-service:
-      path: /producer-service/**
-      serviceId: producer-service
+#zuul:
+#  routes:
+#    consumer-service:
+#      path: /consumer-service/**
+#      serviceId: consumer-service
+#    producer-service:
+#      path: /producer-service/**
+#      serviceId: producer-service
 spring:
   sleuth:
     sampler:
       probability: 1.0
   zipkin:
     base-url: http://zipkin-server/
-#    sender:
-#      type: web
