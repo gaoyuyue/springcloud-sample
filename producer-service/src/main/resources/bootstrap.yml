@@ -26,6 +26,8 @@ spring:
   zipkin:
     sender:
       type: web
+  redis:
+    host: 127.0.0.1
 eureka:
   client:
     service-url:
@@ -34,3 +36,9 @@ eureka:
     prefer-ip-address: true
 server:
   port: 50001
+security:
+  oauth2:
+    resource:
+      prefer-token-info: false
+      user-info-uri: http://localhost:50000/auth-service/user
+      id: producer-service

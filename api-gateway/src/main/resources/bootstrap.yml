@@ -34,3 +34,13 @@ eureka:
     prefer-ip-address: true
 server:
   port: 50000
+
+security:
+  oauth2:
+    client:
+      access-token-uri: http://localhost:50000/auth-service/oauth/token
+      user-authorization-uri: http://localhost:50000/auth-service/oauth/authorize
+      client-id: webapp
+    resource:
+      user-info-uri: http://localhost:50000/auth-service/user
+      prefer-token-info: false
