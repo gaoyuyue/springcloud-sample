@@ -6,4 +6,5 @@ include 'producer-service'
 include 'consumer-service'
 include 'hystrix-dashboard'
 include 'zipkin-server'
+include 'auth-service'
 
