@@ -36,7 +36,7 @@ public class User extends AbstractAuditingEntity {
     private Set<Role> roles = new HashSet<>();
 
     @Transient
-    private Set<GrantedAuthority> authorities;
+    private Set<GrantedAuthority> authorities = new HashSet<>();
 
     public Set<GrantedAuthority> getAuthorities() {
         roles.forEach(role ->

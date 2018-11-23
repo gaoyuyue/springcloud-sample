@@ -40,7 +40,21 @@ security:
     client:
       access-token-uri: http://localhost:50000/auth-service/oauth/token
       user-authorization-uri: http://localhost:50000/auth-service/oauth/authorize
-      client-id: webapp
+      client-id: api-gateway
     resource:
       user-info-uri: http://localhost:50000/auth-service/user
       prefer-token-info: false
+
+zuul:
+  routes:
+    uaa:
+      path: /auth-service/**
+      sensitiveHeaders:
+      serviceId: auth-service
+    order:
+      path: /producer-service/**
+      sensitiveHeaders:
+      serviceId: producer-service
+  add-proxy-headers: true
+
+debug: true

@@ -11,5 +11,4 @@ dependencies {
     implementation('org.springframework.retry:spring-retry')
     implementation('org.springframework.cloud:spring-cloud-starter-security')
     implementation('org.springframework.cloud:spring-cloud-starter-oauth2')
-    implementation('org.springframework.boot:spring-boot-starter-data-redis')
 }

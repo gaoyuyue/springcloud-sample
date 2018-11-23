@@ -42,3 +42,5 @@ security:
       prefer-token-info: false
       user-info-uri: http://localhost:50000/auth-service/user
       id: producer-service
+
+debug: true

@@ -8,6 +8,7 @@ spring:
     url: jdbc:mysql:///upms?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=true
   redis:
     host: 127.0.0.1
+    port: 6379
   jpa:
     hibernate:
       ddl-auto: update

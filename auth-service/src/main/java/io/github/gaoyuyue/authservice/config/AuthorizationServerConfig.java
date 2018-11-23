@@ -20,7 +20,6 @@ import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
-import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -73,15 +72,19 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory().withClient("system").secret("system")
-                .authorizedGrantTypes("password", "authorization_code", "refresh_token").scopes("app")
-                .accessTokenValiditySeconds(3600);
+                .authorizedGrantTypes("password", "authorization_code", "refresh_token").scopes("xx")
+                .accessTokenValiditySeconds(3600)
+                .and()
+                .withClient("api-gateway")
+                .scopes("xx")
+                .authorizedGrantTypes("implicit");
     }
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints.authenticationManager(authenticationManager)
                 .tokenStore(tokenStore())
-                .userDetailsService(userDetailsService);
+                .userDetailsService(userDetailsService);   //refresh_token
         if (storeWithJwt) {
             endpoints.accessTokenConverter(accessTokenConverter());
         }
