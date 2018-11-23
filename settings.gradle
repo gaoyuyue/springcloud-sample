@@ -7,4 +7,5 @@ include 'consumer-service'
 include 'hystrix-dashboard'
 include 'zipkin-server'
 include 'auth-service'
+include 'user-service'
 

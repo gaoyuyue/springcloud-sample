@@ -56,5 +56,3 @@ zuul:
       sensitiveHeaders:
       serviceId: producer-service
   add-proxy-headers: true
-
-debug: true
