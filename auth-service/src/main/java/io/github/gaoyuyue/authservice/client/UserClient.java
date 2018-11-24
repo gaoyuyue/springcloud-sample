@@ -8,6 +8,6 @@ import java.util.Map;
 
 @FeignClient(value = "user-service")
 public interface UserClient {
-    @GetMapping("/user")
+    @GetMapping("/security-user")
     Map<String, Object> getUserByUserName(@RequestParam("userName") String userName);
 }

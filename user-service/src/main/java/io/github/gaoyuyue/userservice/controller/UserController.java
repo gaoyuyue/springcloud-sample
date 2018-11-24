@@ -13,7 +13,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/user")
+    @GetMapping("/security-user")
     public Map<String, Object> getUserByUserName(@RequestParam String userName) {
         return userService.getSecurityUserByUserName(userName);
     }
