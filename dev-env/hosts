@@ -1,0 +1,8 @@
+127.0.0.1   api-gateway
+127.0.0.1   auth-service
+127.0.0.1   configuration-center
+127.0.0.1   user-service
+127.0.0.1   zipkin-server
+127.0.0.1   registration-center
+127.0.0.1   producer-service
+127.0.0.1   consumer-service

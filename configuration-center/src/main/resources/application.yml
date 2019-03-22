@@ -5,7 +5,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/gaoyuyue/springcloud-ddd-sample/
+          uri: https://github.com/gaoyuyue/springcloud-sample/
           search-paths: config-repo
   rabbitmq:
     addresses: rabbitmq
