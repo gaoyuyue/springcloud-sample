@@ -2,6 +2,7 @@ image: java:8
 
 stages:
   - build
+  - test
 
 build:
   stage: build
