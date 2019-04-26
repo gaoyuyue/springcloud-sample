@@ -1,0 +1,13 @@
+image: java:8
+
+stages:
+  - build
+
+build:
+  stage: build
+  script:
+    - chmod +x gradlew
+    - ./gradlew build
+
+include:
+  template: Dependency-Scanning.gitlab-ci.yml
