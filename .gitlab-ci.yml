@@ -11,4 +11,4 @@ build:
     - ./gradlew build
 
 include:
-  template: Dependency-Scanning.gitlab-ci.yml
+  - template: Security/Dependency-Scanning.gitlab-ci.yml
